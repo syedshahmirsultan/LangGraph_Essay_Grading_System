@@ -1,4 +1,4 @@
-#Importing All Necccessary modules
+# Importing All Necccessary modules
 import streamlit as st
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.graph.state import CompiledStateGraph
@@ -61,7 +61,7 @@ def overallRating(state:State):
 
 # Function for Route_handling in Graph
 def route_handling(state:State):
-    if state['relevance'].lower == 'no':
+    if state['relevance'].lower().strip() == 'no':
         return END
     else:
         return 'grammatically'
@@ -107,15 +107,15 @@ def invoking_graph():
       if topic and essay:
         results = graph.invoke({'essay':essay,'topic':topic})
         # Just for Line Break
-        st.write("                                                   ")
+        st.empty()
         # Checking If relevance state will be Yes then it will display all these states
-        if results['relevance'] and results['grammar'] and results['structure'] and results['overallRating']:
+        if results['relevance'].lower().strip() == 'yes' and results['grammar'] and results['structure'] and results['overallRating']:
            st.write(f" Relevance : {results['relevance']}")
            st.write(f"Grammar : {results['grammar']}")
            st.write(f"Structure : {results['structure']}")
            st.write(f"OverallRating : {results['overallRating']}") 
-           # Checking If relevance state will be No it will display the below code 
-        elif not results['relevance']:
+           # Checking If relevance state will be No it will display the below Relevance and warning
+        if results['relevance'].lower().strip() == 'no':
             st.write(f" Relevance : {results['relevance']}")
             st.warning("This Essay is Irrelevant from the topic")
         
@@ -126,3 +126,4 @@ def invoking_graph():
        pass
         
 invoking_graph()
+
