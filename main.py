@@ -90,8 +90,6 @@ workflow.add_edge('OverallRating',END)
 
 graph:CompiledStateGraph = workflow.compile()
 
-# graph_image = graph.get_graph().draw_mermaid_png()
-# st.image(graph_image, caption='Workflow Graph', use_column_width=True)
 
 
 # Streamlit Frontend Portion
@@ -127,4 +125,9 @@ def invoking_graph():
        pass
         
 invoking_graph()
+
+ # Workflow Graph
+st.write("                   ")
+graph_image = graph.get_graph().draw_mermaid_png()
+st.image(graph_image, caption='Workflow Graph', use_column_width=False)
 
