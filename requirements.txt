@@ -1,0 +1,6 @@
+streamlit
+langgraph
+IPython
+python-dotenv
+typing-extensions
+git+https://github.com/langchain-ai/langchain-google.git@main#egg=langchain_google_genai&subdirectory=libs/genai
