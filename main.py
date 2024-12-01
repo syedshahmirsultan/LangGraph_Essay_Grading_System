@@ -93,7 +93,7 @@ graph:CompiledStateGraph = workflow.compile()
 
 
 # Streamlit Frontend Portion
-st.title("Essay Grading AI Agent")
+st.title("Essay Grading System")
 
 topic = st.text_input("Topic of Essay")
 essay = st.text_area("Enter Essay")
